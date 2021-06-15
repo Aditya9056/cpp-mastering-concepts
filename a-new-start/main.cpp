@@ -2,6 +2,7 @@
 #include <climits> // Needed for findlimits()
 #include <iomanip> // Needed for formattingOutput formatted I/O
 #include <typeinfo> // Needed for finding types typeif().name()
+#include <ctime> // Needed for displayDateTime
 using namespace std;
 
 void sizeFinder(){
@@ -33,7 +34,7 @@ void findLimits(){
 	cout << " The minimum limit of short data type :                " << SHRT_MIN << endl;
     cout << " The maximum limit of short data type :                " << SHRT_MAX << endl;
     cout << " The maximum limit of unsigned short data type :       " << USHRT_MAX << endl;
-   cout << endl;
+    cout << endl;
 }
 
 void ifCrossingLimits(){
@@ -70,9 +71,8 @@ void checkOverFlowDuringArithmeicCalculations(){
 
 }
 
-int formattingOutput(){
-   cout << " The value of pi in scientific format is : " << typeid(fixed).name() << endl; //typeof scienctic is a custom class
-
+void formattingOutput(){
+    cout << " The value of pi in scientific format is : " << typeid(fixed).name() << endl; //typeof scienctic is a custom class
     cout << "\n\n Formatting the output :\n";
 	cout << "----------------------------\n"; 
    
@@ -95,7 +95,6 @@ int formattingOutput(){
    cout << " Status in alphabet : " << done << endl;
    cout << endl;
 
-   return 0;
 }
 
 void inputReading(){
@@ -117,6 +116,61 @@ void numSwap(){
     cout << i << " " << y << '\n';
 }
 
+void quotientRemainder(){
+    int i, y;
+    cin >> i >> y;
+    cout << i << " " << y << '\n';
+
+    cout << i%y << " is remainder" << '\n';
+    cout << i/y << " is quotient" << '\n';
+}
+
+void displayDateTime(){
+    time_t t = time(NULL);
+    tm* tPtr = localtime(&t);
+    cout << "\n\n Display the Current Date and Time :\n";
+    cout << "----------------------------------------\n";
+    cout << " seconds = " << (tPtr->tm_sec) << endl;
+    cout << " minutes = " << (tPtr->tm_min) << endl;
+    cout << " hours = " << (tPtr->tm_hour) << endl;
+    cout << " day of month = " << (tPtr->tm_mday) << endl;
+    cout << " month of year = " << (tPtr->tm_mon)+1 << endl;
+    cout << " year = " << (tPtr->tm_year)+1900 << endl;
+    cout << " weekday = " << (tPtr->tm_wday )<< endl;
+    cout << " day of year = " << (tPtr->tm_yday )<< endl;
+    cout << " daylight savings = " <<(tPtr->tm_isdst )<< endl;
+    cout << endl;
+    cout << endl;
+
+    cout << " Current Date: " <<(tPtr->tm_mday)<<"/"<< (tPtr->tm_mon)+1 <<"/"<< (tPtr->tm_year)+1900<< endl;
+    cout << " Current Time: " << (tPtr->tm_hour)<<":"<< (tPtr->tm_min)<<":"<< (tPtr->tm_sec) << endl; 
+    cout << endl;
+}
+
+void checkTypeCasting(){
+    cout << "\n\n Formatting the output using type casting:\n";
+	cout << "----------------------------------------------\n"; 
+	cout<<"Print floating-point number in fixed format with 1 decimal place: ";
+    cout << fixed << setprecision(1);
+    cout<<"\nTest explicit type casting :\n";
+    int i1 = 4, i2 = 8;
+    cout << i1 / i2 << endl;    
+    cout << (double)i1 / i2 << endl; 
+    cout << i1 / (double)i2 << endl;  
+    cout << (double)(i1 / i2) << endl;
+ 
+    double d1 = 5.5, d2 = 6.6;
+    cout<<"\nTest implicit type casting :\n" ;  
+    cout << (int)d1 / i2 << endl;    
+    cout << (int)(d1 / i2) << endl;   
+    cout <<"\nint implicitly casts to double: \n";
+    d1 = i1;    
+    cout << d1 << endl;  // 4.0
+    cout<<"double truncates to int!: \n";
+    i2 = d2;            
+    cout << i2 << endl;  // 6
+}
+
 int main(){
-    numSwap();
+    checkTypeCasting();
 }
