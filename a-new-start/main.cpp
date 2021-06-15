@@ -151,13 +151,15 @@ void checkTypeCasting(){
     cout << "\n\n Formatting the output using type casting:\n";
 	cout << "----------------------------------------------\n"; 
 	cout<<"Print floating-point number in fixed format with 1 decimal place: ";
-    cout << fixed << setprecision(1);
+    
+    cout << fixed << setprecision(40);
+
     cout<<"\nTest explicit type casting :\n";
-    int i1 = 4, i2 = 8;
-    cout << i1 / i2 << endl;    
-    cout << (double)i1 / i2 << endl; 
+    int i1 = 22, i2 = 7;
+    cout << i1 << " " << i2 << endl;    
+    cout << (float) i1/i2 <<endl;
+    cout << (double) i1/i2 <<endl;
     cout << i1 / (double)i2 << endl;  
-    cout << (double)(i1 / i2) << endl;
  
     double d1 = 5.5, d2 = 6.6;
     cout<<"\nTest implicit type casting :\n" ;  
